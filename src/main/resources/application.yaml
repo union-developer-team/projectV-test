@@ -1,3 +1,31 @@
 spring:
   application:
     name: vetConsulatationApi
+
+  datasource:
+    # Workbench: 127.0.0.1:3306 / root
+    url: jdbc:mysql://127.0.0.1:3306/vet_consultation?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    # 실제 Workbench 비밀번호로 바꾸거나, export DB_PASSWORD='...' 후 기동
+    password: ${DB_PASSWORD:YOUR_MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      # 테이블은 Workbench에서 이미 만듦 → 엔티티와 일치 여부만 검사
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # 의존성에 Flyway가 있어도 사용하지 않음
+  flyway:
+    enabled: false
+
+  # Redis/Kafka가 로컬에 없으면 기동 실패할 수 있음 → 회원 연동만 볼 때 임시 제외
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+#      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration

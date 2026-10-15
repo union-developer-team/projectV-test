@@ -25,8 +25,8 @@ public record MemberResult(
     public static MemberResult from(Member member) {
         return new MemberResult(
                 member.getId(),
-                member.getName(),
                 member.getEmail(),
+                member.getName(),
                 member.getPhone(),
                 member.getStatus(),
                 member.getRoles()
