@@ -19,6 +19,6 @@ public interface MemberRepositoryPort {
     Member save(Member member);
 
     // 조회, 수정, 탈퇴에서 사용 (Register에서는 안 씀, 미리 선언해도 됨)
-    Optional<Member> findById(String id);
+    Optional<Member> findById(Long id);
     Optional<Member> findByEmail(String email);
 }
