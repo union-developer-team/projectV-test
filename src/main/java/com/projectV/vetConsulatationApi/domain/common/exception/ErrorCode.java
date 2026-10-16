@@ -25,7 +25,13 @@ public enum ErrorCode {
     INVALID_MEMBER_STATUS(HttpStatus.BAD_REQUEST, "INVALID_MEMBER_STATUS", "유효하지 않은 회원 상태입니다."),
 
     // 예측하지 못한 서버 오류 (클라이언트에 상세 원인은 숨김)
-    INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 내부 오류가 발생했습니다.");
+    INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 내부 오류가 발생했습니다."),
+
+    // 로그인 실패 (이메일 없음 / 비밀번호 불일치 - 메시지는 동일하게)
+    INVALID_CREDENTIALS(HttpStatus.UNAUTHORIZED, "INVALID_CREDENTIALS", "이메일 또는 비밀번호가 올바르지 않습니다."),
+
+    // Access/Refresh 토큰이 없거나 위조, 만료, 폐기
+    INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "INVALID_TOKEN", "유효하지 않은 토큰입니다.");
 
     private final HttpStatus httpstatus;    // HTTP 응답 상태
     private final String code;              // 클라이언트가 분기할 기계용 코드
