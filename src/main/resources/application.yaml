@@ -29,3 +29,11 @@ spring:
 #    exclude:
 #      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
 #      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+
+# JWT 설정 (시크릿은 환경변수 권장, 로그에 출력 금지)
+app:
+  jwt:
+    # HS256은 비밀키가 충분히 길어야 함 (32바이트 이상 권장)
+    secret: ${JWT_SECRET:change-me-to-a-long-random-secret-key-at-least-32bytes}
+    access-token-validity-seconds: 1800   # 30분
+    refresh-token-validity-days: 14
